@@ -10,4 +10,5 @@ RUN apt-get install -y \
     ca-certificates \
     curl \
     wget \
-    postgresql-client
+    postgresql-client \
+    openssl
