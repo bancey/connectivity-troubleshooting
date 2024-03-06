@@ -11,4 +11,5 @@ RUN apt-get install -y \
     curl \
     wget \
     postgresql-client \
-    openssl
+    openssl \
+    dnsutils
