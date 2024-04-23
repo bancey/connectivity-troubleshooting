@@ -13,4 +13,5 @@ RUN apt-get install -y \
     postgresql-client \
     openssl \
     dnsutils \
-    openssh-client
+    openssh-client \
+    nano
