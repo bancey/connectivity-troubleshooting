@@ -15,3 +15,6 @@ RUN apt-get install -y \
     dnsutils \
     openssh-client \
     nano
+
+RUN wget https://aka.ms/downloadazcopy-v10-linux -O - | tar xz && cd azcopy* && mv azcopy /usr/bin/azcopy \
+    chmod +x /usr/bin/azcopy
