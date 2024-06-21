@@ -16,5 +16,4 @@ RUN apt-get install -y \
     openssh-client \
     nano
 
-RUN wget https://aka.ms/downloadazcopy-v10-linux -O - | tar xz && cd azcopy* && mv azcopy /usr/bin/azcopy \
-    chmod +x /usr/bin/azcopy
+RUN cd /usr/local/bin; curl -L https://aka.ms/downloadazcopy-v10-linux | tar --strip-components=1 --exclude=*.txt -xzvf -; chmod +x azcopy
