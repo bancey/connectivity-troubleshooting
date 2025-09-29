@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: connectivity-troubleshooting
+  labels:
+    app: connectivity-troubleshooting
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: connectivity-troubleshooting
+  template:
+    metadata:
+      labels:
+        app: connectivity-troubleshooting
+    spec:
+      containers:
+      - name: troubleshooting
+        image: ghcr.io/bancey/connectivity-troubleshooting:latest
+        # Keep the container running so you can exec into it
+        command: ["/bin/sh"]
+        args: ["-c", "while true; do sleep 30; done"]
+        # Optional: Add some environment variables if needed
+        env:
+        - name: TERM
+          value: "xterm"
+        # Optional: Add resource limits
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        # Optional: Add security context for troubleshooting capabilities
+        securityContext:
+          # Allow running as root for troubleshooting
+          runAsUser: 0
+          # Add network capabilities for tools like ping, traceroute
+          capabilities:
+            add:
+            - NET_RAW
+            - NET_ADMIN
+      # Optional: Use host network for certain network troubleshooting scenarios
+      # hostNetwork: true
+      # dnsPolicy: ClusterFirstWithHostNet
+      restartPolicy: Always
