@@ -11,6 +11,7 @@ RUN apt-get install -y \
     curl \
     wget \
     postgresql-client \
+    redis-tools \
     openssl \
     dnsutils \
     openssh-client \
